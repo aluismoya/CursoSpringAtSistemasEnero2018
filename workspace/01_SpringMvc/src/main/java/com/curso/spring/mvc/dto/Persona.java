@@ -4,6 +4,13 @@ public class Persona {
 
 	private int id;
 	private String nombre;
+	private Genero sexo;
+	public Genero getSexo() {
+		return sexo;
+	}
+	public void setSexo(Genero sexo) {
+		this.sexo = sexo;
+	}
 	public int getId() {
 		return id;
 	}
