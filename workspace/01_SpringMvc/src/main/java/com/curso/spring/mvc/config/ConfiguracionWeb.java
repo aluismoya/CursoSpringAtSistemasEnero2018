@@ -1,14 +1,19 @@
 package com.curso.spring.mvc.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceView;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -31,6 +36,18 @@ public class ConfiguracionWeb implements WebMvcConfigurer {
 		WebMvcConfigurer.super.addViewControllers(registry);
 
 		//registry.addViewController("/formulario").setViewName("formulario");//Son siempre GET
+	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		WebMvcConfigurer.super.addInterceptors(registry);
+		
+		registry.addInterceptor(localeChangeInterceptor());
+	}
+	
+	@Bean
+	public LocaleChangeInterceptor localeChangeInterceptor(){
+		return new LocaleChangeInterceptor();
 	}
 
 	@Bean
@@ -60,6 +77,15 @@ public class ConfiguracionWeb implements WebMvcConfigurer {
 		return new InternalResourceViewResolver("/WEB-INF/jsps/", ".jsp");
 	}
 
+	@Bean
+	public MessageSource messageSource(){
+		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+		
+		messageSource.setBasename("/WEB-INF/mensajes");
+		
+		return messageSource;
+	}
+	
 	/*
 	 * @Bean
 	 * 
