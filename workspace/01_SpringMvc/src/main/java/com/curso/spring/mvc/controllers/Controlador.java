@@ -4,9 +4,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,9 +65,13 @@ public class Controlador {
 	 * @return
 	 */
 	@RequestMapping(path="/cambioDeNombre", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_XML_VALUE)
-	@ResponseBody public Persona cambiarElNombreALaPersona(@RequestBody Persona persona, @RequestParam(required=true) String nombreNuevo) {
+	@ResponseBody public ResponseEntity<Persona> cambiarElNombreALaPersona(@RequestBody Persona persona, @RequestParam(required=true) String nombreNuevo) {
 		persona.setNombre(nombreNuevo);
-		return persona;
+		HttpHeaders headers = new HttpHeaders();
+		
+		headers.setLocation(null);
+		
+		return new ResponseEntity<Persona>(persona, headers , HttpStatus.CREATED);
 	}
 	
 }
