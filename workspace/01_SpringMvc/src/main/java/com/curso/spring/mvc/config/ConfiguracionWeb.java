@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.mvc.ParameterizableViewController;
 import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceView;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -37,6 +38,14 @@ public class ConfiguracionWeb implements WebMvcConfigurer {
 
 		//registry.addViewController("/formulario").setViewName("formulario");//Son siempre GET
 	}
+	/*
+	@Bean(name="/formulario")
+	public ParameterizableViewController parameterizableViewController(){
+		ParameterizableViewController parameterizableViewController = new ParameterizableViewController();
+		parameterizableViewController.setViewName("formulario");
+		return parameterizableViewController;
+	}
+	*/
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
