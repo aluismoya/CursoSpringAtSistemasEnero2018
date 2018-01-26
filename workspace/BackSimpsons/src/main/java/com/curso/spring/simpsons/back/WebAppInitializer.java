@@ -1,4 +1,4 @@
-package com.curso.spring.simpsons.personajes;
+package com.curso.spring.simpsons.back;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ public class WebAppInitializer implements WebApplicationInitializer{
 		
 		AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
 		
-		webApplicationContext.setConfigLocation("com.curso.spring.simpsons.personajes.config");
+		webApplicationContext.setConfigLocation(this.getClass().getPackage().getName() + ".config");
 		
 		Dynamic servlet = servletContext.addServlet("dispatcherServlet", new DispatcherServlet(webApplicationContext));
 		

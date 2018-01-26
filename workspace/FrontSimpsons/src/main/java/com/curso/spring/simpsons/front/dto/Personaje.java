@@ -1,4 +1,4 @@
-package com.curso.spring.simpsons.personajes.dto;
+package com.curso.spring.simpsons.front.dto;
 
 public class Personaje {
 
