@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Listado</title>
+</head>
+<body>
+	<tr th:each="personaje: ${resultado}">
+		<td th:text="${personaje.nombre}" ></td>
+		<td th:text="${personaje.apellido}"></td>
+	</tr>
+</body>
+</html>
