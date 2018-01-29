@@ -40,7 +40,7 @@ public class UsuarioController {
 		//return "login";
 		
 		//Si exito
-		Usuario usuario = null;
+		Usuario usuario = null;//Teenr cuidado de no incluir el password en el objeto Usuario, ya que va a la session
 		session.setAttribute("usuario", usuario);
 		
 		return "bienvenida";
