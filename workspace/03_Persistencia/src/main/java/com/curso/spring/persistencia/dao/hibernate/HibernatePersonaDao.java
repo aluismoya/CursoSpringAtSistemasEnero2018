@@ -1,13 +1,12 @@
-package com.curso.spring.persistencia.dao;
+package com.curso.spring.persistencia.dao.hibernate;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.curso.spring.persistencia.dao.PersonaDao;
 import com.curso.spring.persistencia.entidades.Persona;
 
 @Repository
-@Transactional
 public class HibernatePersonaDao extends HibernateDao implements PersonaDao {
 	
 	/* (non-Javadoc)

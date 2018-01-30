@@ -13,10 +13,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
-@ComponentScan("com.curso.spring.persistencia.dao")
-public class ConfiguracionPersistencia {
+import com.curso.spring.persistencia.entidades.Persona;
+
+//@Configuration
+@ComponentScan("com.curso.spring.persistencia.dao.hibernate")
+//Anotacion encargada de inteerpretar las configuraciones de las transacciones declarativas con las anotaciones @Transactional
+@EnableTransactionManagement
+public class ConfiguracionHibernatePersistencia {
 
 	@Bean
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
@@ -25,11 +30,12 @@ public class ConfiguracionPersistencia {
 
 	@Bean
 	@Autowired
-	public void sessionFactory(DataSource dataSource) {
+	public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
 
 		localSessionFactoryBean.setDataSource(dataSource);
-		localSessionFactoryBean.setAnnotatedPackages("com.curso.spring.persistencia.entidades");
+		//localSessionFactoryBean.setAnnotatedPackages("");//Necesita crer la clase package-info.java, con la anotacion @TypeDefs
+		localSessionFactoryBean.setAnnotatedClasses(Persona.class);
 		Properties hibernateProperties = new Properties();
 
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.DerbyDialect");
@@ -45,6 +51,8 @@ public class ConfiguracionPersistencia {
 
 		localSessionFactoryBean.setHibernateProperties(hibernateProperties);
 
+		return localSessionFactoryBean;
+		
 	}
 
 	// @Bean

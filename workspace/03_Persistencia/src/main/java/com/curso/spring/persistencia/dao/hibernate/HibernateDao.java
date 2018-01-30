@@ -1,4 +1,4 @@
-package com.curso.spring.persistencia.dao;
+package com.curso.spring.persistencia.dao.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
 package com.curso.spring.mvc.controllers;
 
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -29,6 +30,7 @@ public class ConfiguracionControladores {
 	@InitBinder
 	public void initBinder(final WebDataBinder binder) {
 		binder.addValidators(new PersonaNombreNotNullValidador());
+		binder.addCustomFormatter(new DateFormatter("dd/MM/yyyy"));
 	}
 
 }
