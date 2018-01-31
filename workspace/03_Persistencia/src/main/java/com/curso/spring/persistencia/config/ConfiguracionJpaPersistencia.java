@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//s@Configuration
+//@Configuration
 @ComponentScan("com.curso.spring.persistencia.dao.jpa")
 //Anotacion encargada de inteerpretar las configuraciones de las transacciones declarativas con las anotaciones @Transactional
 @EnableTransactionManagement

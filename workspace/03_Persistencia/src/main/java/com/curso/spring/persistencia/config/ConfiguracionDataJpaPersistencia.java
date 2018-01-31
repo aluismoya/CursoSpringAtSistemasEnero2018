@@ -57,7 +57,7 @@ public class ConfiguracionDataJpaPersistencia {
 	// @Bean
 	// public DataSource dataSource() {
 	// BasicDataSource ds = new BasicDataSource();
-	// ds.setUrl("jdbc:derby://localhost:1527/jndi");
+	// ds.setUrl("jdbc:derby://localhost:1527/jndi;create=true");
 	// ds.setUsername("admin");
 	// ds.setPassword("admin");
 	// ds.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
