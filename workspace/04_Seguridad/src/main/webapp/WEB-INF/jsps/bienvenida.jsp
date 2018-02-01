@@ -10,5 +10,6 @@
 </head>
 <body>
 	Bienvenida
+	<a href="/04_Seguridad/logout">logout</a>
 </body>
 </html>

@@ -11,5 +11,10 @@ public class Controlador {
 	public String bienvenida() {
 		return "bienvenida";
 	}
+	
+	@RequestMapping(path = "/secreto", method = RequestMethod.GET)
+	public String secreto() {
+		return "bienvenida";
+	}
 
 }

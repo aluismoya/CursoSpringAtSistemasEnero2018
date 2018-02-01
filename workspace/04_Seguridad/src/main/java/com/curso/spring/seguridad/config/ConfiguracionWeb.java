@@ -27,8 +27,7 @@ public class ConfiguracionWeb extends WebMvcConfigurerAdapter {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		super.addViewControllers(registry);
 
-		// registry.addViewController("/formulario").setViewName("formulario");//Son
-		// siempre GET
+		registry.addViewController("/").setViewName("bienvenida");
 	}
 
 	@Bean
