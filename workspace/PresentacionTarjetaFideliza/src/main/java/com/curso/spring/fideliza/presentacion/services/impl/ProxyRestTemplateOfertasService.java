@@ -15,10 +15,14 @@ public class ProxyRestTemplateOfertasService implements IOfertasService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	private final String hostPort = "localhost:8280";
+	
+	private final String path = "/oferta";
+	
 	@Override
 	public List<Oferta> consultarTodas() {
 		try {
-			return Arrays.asList(restTemplate.getForEntity(new URI("http://localhost:8280/oferta"), Oferta[].class).getBody());
+			return Arrays.asList(restTemplate.getForEntity(new URI("http://" + hostPort + path), Oferta[].class).getBody());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
